@@ -2,33 +2,99 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>(〃'▽'〃)</title>
+  <title>Title</title>
 </head>
 <body>
-  <div>
-    <h1>Mirai_Dynamik</h1>
-    <h3>// // // // 施工中 // // // //</h3>
-  </div>
-    
-  <p>
-    同人开发者<br>
-    小概率在 miraidynamik@gmail.com 找到<br>
-    电子工程本科在读不转码<br>
-  </p>
-  <p>
-    ⭐ChatGPT <br>
-    ⭐Python <br>
-    Matlab <br>
-    C (for Microcontrollers) <br>
-    Java <br>
-    HTML+CSS+JS+Bootstrap <br>
-    Flask <br>
-    Eel <br>
-    Django 5 <--New! <br>
-    Svelte 5 <--New! <br>
-    Tailwind <--New! <br>
-  </p>
-  <img src="/Miku%20Flying%20Cold.png" alt="My Avatar">
+  <h1 id="how-to-use-quartus-prime-lite-19-1-and-modelsim-altera-to-create-and-simulate-a-circuit">How to Use Quartus Prime Lite 19.1 and ModelSim Altera to Create and Simulate a Circuit</h1>
+<h4 id="introduction">Introduction</h4>
+<p>These instructions teach complete beginners how to use Quartus Prime Lite 19.1 and ModelSim Altera by guiding them through creating and simulating a full adder circuit. In the next section, you will implement this full adder on a Intel DE-10 Lite FPGA Board, later in this series, you will learn about incorporating this full adder in an arithmetic logic unit, which is a part of a computer. Following these instructions, you will first create a project. Then you will capture a schematic, which means drawing a circuit with abstract symbols that each represents a circuit component; this involves adding inputs, outputs, logic gates, and connecting these components together with wires. Finally, you will simulate this circuit design, which means giving the circuit virtual inputs and observe the outputs.</p>
+<p>Figure 1 shows the graphic user interface of Quartus Prime Lite, with a schematic of a full adder in it. Following this tutorial, you will create a schematic file in &#39;File&#39; under A, the main menu bar, and then save it with B, the save button. After saving the file, the canvas, C will appear in the center of the screen. Double click canvas on any space to create components, then connect components together with D, the Orthogonal Node Tool, which is basically a wire tool, into E, the schematic of a full adder. After editing the schematic, you are going to save it with B, then click F to compile it, wait until successful message appear in G, the message panel. Finally, you will configure for simulation and open ModelSim Altera in &#39;Tools&#39; under A.</p>
+<p><img src="./img/sov1-2.png" alt="sov1-2" /></p>
+<p>Figure 2 shows the simulation window of ModelSim Altera. Following this tutorial, you will first start the simulation with &#39;Simulate&#39; under A, then B, the objects panel will appear. You are going to find input and output of the circuit in B, and add them to C, the waves window, so that these objects will display in D. You will then run the simulation and the results will show up in E, if the results align with expected values, you have successfully created a working full adder.</p>
+<p><img src="./img/sov2-2.png" alt="sov2-2" /></p>
+<p>Figure 3a, 3b, and 3c shows the materials required:
+3a. A Windows computer
+3b. Quartus Prime Lite 19.1
+3c. ModelSim Altera</p>
+<p><img src="./img/1760920950106.jpg" alt="Figure 3a" />
+<img src="./img/Pasted image 20251019174709.png" alt="Figure 3b" />
+<img src="./img/Pasted image 20251019174615.png" alt="Figure 3c" /></p>
+<h4 id="steps-1-10">Steps 1–10</h4>
+<p><strong>Step 1 — Open Quartus Prime and Create a Project</strong></p>
+<p>Start Quartus Prime, you will see figure 4, click &#39;New Project Wizard&#39;</p>
+<p><img src="./img/newprj1.png" alt="newprj1" /></p>
+<p>You will see figure 5a, where A, the new project wizard window appears. Click next.</p>
+<p><img src="./img/newprj2.png" alt="newprj2" /></p>
+<p>Now you can see figure 5b, set the project directory as a path without a space, name the project as FullAdder. Click &#39;Next&#39;.</p>
+<p><img src="./img/newprj3.png" alt="newprj3" /></p>
+<p>Click &#39;Next&#39; until you can see figure 5c: Family, Device &amp; Board Settings<br>Select the Family of device as DE-10 at B, scroll down through C, the list of Available devices, until you find 10M50DAF484C7G. Select 10M50DAF484C7G.</p>
+<p><img src="./img/newprj4 1.png" alt="newprj4 1" /></p>
+<p>Click next, you will see figure 5d, select ModelSim Altera as the gate level simulation tool at D, select the format as Verilog HDL. Click &#39;Next&#39; and then click &#39;Finish&#39;, and you have successfully created a project.</p>
+<p><img src="./img/newprj5.png" alt="newprj5" /></p>
+<p><em>Caution:</em> Do not select ModelSim as the EDA tool for simulation, since it is different from ModelSim Altera that we are going to use.</p>
+<hr>
+<p><strong>Step 2 — Create a Schematic File</strong></p>
+<p>Now you can see this interface as figure 6a, click &#39;File&#39; and &#39;New&#39; as 6b shows, then you will see the &#39;New&#39; window like figure 6c, select &#39;schematic/ block diagram&#39; and click &#39;OK&#39;. Save the file.</p>
+<p><img src="./img/fig11.png" alt="fig11" />
+<img src="./img/schmtc1.png" alt="schmtc1" />
+<img src="./img/schmtc2.png" alt="schmtc2" /></p>
+<hr>
+<p><strong>Step 3 — Place Elements and Connect Wires</strong></p>
+<p>You have created an empty schematic like figure 7, double click anywhere empty on the canvas.</p>
+<p><img src="./img/schmtct5.png" alt="schmtct5" /></p>
+<p>Then you can see a pop up like figure 8, where you can search for elements. Type &#39;input&#39; in A, select &#39;Repeat-insert mode&#39;, click &#39;OK&#39;, and click anywhere empty on the canvas for 3 times to create 3 input elements.</p>
+<p><img src="./img/schmtc6.png" alt="schmtc6" /></p>
+<p>Now repeat to add new elements, search for &#39;output&#39;, and create 2 output elements, search for &#39;or3&#39; and create a three-input or gate, search for &#39;and2&#39; and create 3 two-input and gates, search for &#39;xor&#39; and create 2 two-input xor gates.</p>
+<p>Double click the name of any symbol to rename it like figure 9 shows. Rename the three inputs exactly as &#39;SW[0]&#39;, &#39;SW[1]&#39;, and &#39;SW[2]&#39;; rename the two outputs exactly as &#39;LEDR[0]&#39; and &#39;LEDR[1]&#39;</p>
+<p><img src="./img/schmtc7.png" alt="schmtc7" /></p>
+<p>Drag symbols around to arrange them roughly like what figure 10 shows.</p>
+<p><img src="./img/fig19.png" alt="fig19" /></p>
+<p>Finally, select the Orthogonal Node Tool and draw wires like figure 11, and you have completed building the schematic of a full adder.</p>
+<p><img src="./img/schmtc8 1.png" alt="schmtc8 1" /></p>
+<p><em>Caution:</em> Drag symbols around before (but not after) wires are attached to them, since different wires often stick with each other or with symbol if they meet each other when you are moving them.</p>
+<hr>
+<p><strong>Step 4 — Compile the Circuit</strong></p>
+<p>Save your changes and click compile like figure 12, the compilation report view A will appear, wait for the compilation to complete. When the compilation is complete, the message window B will show a message like “Info (293000): Quartus Prime Full Compilation was successful. 0 errors, 14 warnings.” You don&#39;t have to do anything if there are warnings.</p>
+<p><img src="./img/schmtc9.png" alt="schmtc9" /></p>
+<hr>
+<p><strong>Step 5 — Configure for Simulation</strong></p>
+<p>Like in figure 13, click &#39;tools&#39; and click &#39;options&#39; in the dropdown, then you will see the &#39;Options&#39; window, click &#39;EDA Tool Options&#39;, and you will see figure 15. Insert the path to modelsim.exe in A, the entry &#39;ModelSim Altera&#39;, click &#39;OK&#39;.</p>
+<p><img src="./img/sim1.png" alt="sim1" />
+<img src="./img/sim2.png" alt="sim2" /></p>
+<hr>
+<p><strong>Step 6 — Open ModelSim Altera (Through Quartus Prime)</strong></p>
+<p>Like figure 14, click &#39;tools&#39;, hover on &#39;run simulation tool&#39;, and click &#39;gate level simulation&#39;, so that ModelSim Altera will start.</p>
+<p><img src="./img/sim3.png" alt="sim3" /></p>
+<p>Like figure 15, you will see the graphic user interface of ModelSim Altera, with A. Menu bar, B. Objects panel, and C. Wave window.</p>
+<p><img src="./img/sim4.png" alt="sim4" /></p>
+<hr>
+<p><strong>Step 7 — Configure for and Start the Simulation</strong></p>
+<p>Click &#39;Simulate&#39;, then click &#39;start simulation&#39; in the dropdown, you will see a window like figure 16.</p>
+<p><img src="./img/sim5.png" alt="sim5" /></p>
+<p>Like figure 16a, click the &#39;+&#39; beside &#39;work&#39; to expand, and click &#39;FullAdder&#39; under &#39;work&#39;. Then click &#39;Libraries&#39; in the same Start Simulation window, and you will see the page in figure 16b.</p>
+<p><img src="./img/sim6.png" alt="sim6" /></p>
+<p>Like figure 16b, click &#39;add&#39;. Window A will appear, click the triangle on the left of &#39;Browse...&#39; to show all libraries, select &#39;altera_ver&#39;, and click &#39;OK&#39;.<br>Repeat the process above to add &#39;fiftyfivenm_ver&#39;, you will see figure 16c.</p>
+<p><img src="./img/sim7.png" alt="sim7" />
+<img src="./img/fig29.png" alt="fig29" /></p>
+<p>Click &#39;OK&#39;, A: &#39;Objects&#39; window will fill up by the objects from your schematic like figure 17.</p>
+<p><img src="./img/sim8.png" alt="sim8" /></p>
+<hr>
+<p><strong>Step 8 — Forcing Inputs and What to Expect</strong></p>
+<p>Like figure 18, right click &#39;LEDR&#39; under Objects, click &#39;Add Wave&#39;, and repeat for &#39;SW&#39;.</p>
+<p><img src="./img/sim9.png" alt="sim9" /></p>
+<p>What you will see is like figure 19, objects LEDR and SW appear in the wave window, now right click &#39;SW&#39;, click &#39;force&#39; in the dropdown.</p>
+<p><img src="./img/sim10.png" alt="sim10" /></p>
+<p>&#39;Force Selected Signal&#39; window will appear, figure 21 shows the &#39;Force Selected Signal&#39; window. Insert &#39;000&#39; into A: &#39;Value&#39;, as the input. Press key F9, so the simulation will progress for 100 ps, which should be the default run length, and the expected output is &#39;00&#39;, like figure 22.</p>
+<p><img src="./img/sim11.png" alt="sim11" />
+<img src="./img/fig35.png" alt="fig35" /></p>
+<p>Try forcing all the inputs one by one on the left side of the truth table as figure 23, for example, the input of second row is &#39;001&#39;, and the expected output is &#39;01&#39;.<br>Remember to press F9 key every time you modify the input.</p>
+<p><img src="./img/truth_table.png" alt="truth_table" /></p>
+<p>After simulating all eight inputs, you can maximize the wave window and adjust the view to see the full waveform. Now you are likely to see what figure 24 shows. Compare the A: outputs and B: inputs with the truth table in figure 23. If all the outputs correspond to the right side of the truth table, your full adder is working as intended!</p>
+<p><img src="./img/sim12.png" alt="sim12" /></p>
+<hr>
+<h4 id="conclusion">Conclusion</h4>
+<p>Now you have learnt how to create a logic circuit with Quartus Prime and simulate its behavior under inputs using ModelSim Altera. In the next section, you will learn about implementing this full adder on a Intel DE-10 Lite FPGA Board.</p>
+<h4 id="reference">Reference</h4>
+<p><a href="./2025/Lab1.pdf">LAB 1: Introduction to Quartus Schematic Capture, ModelSim Simulation and the Intel/Altera DE10-Lite Board</a></p>
 </body>
 </html>
