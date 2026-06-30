@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('./fonts/DepartureMono-Regular.woff2') format('woff2');
+  src: url('./fonts/unifont-17.0.05.otf') format('opentype');
+  font-display: swap;
+}
+
+html, body, pre, code, kbd, samp,
+.nes-btn, .nes-input, .nes-textarea, .nes-select, .nes-dialog, .nes-container {
+  font-family: 'Departure Mono', 'Unifont', monospace;
+}
+
+body {
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  background-color: whitesmoke;
+}
+
+.row {
+  display: flex;
+  gap: 16px;            /* space between items, no margin hacks */
+}
+.row > div {
+  flex: 1;              /* each child takes equal width */
+}
+
+.row img {
+  width: 128px;          /* tweak: 48, 96, etc. */
+  height: 128px;
+  image-rendering: pixelated;   /* keeps pixel art crisp */
+}
+
+.page {
+  max-width: 960px;     /* tweak: 640, 720, 960 */
+  min-height: 100vh;
+  margin: 0 auto;    /* top/bottom space + auto = horizontal centering */
+  padding: 32px 16px;      /* breathing room on narrow screens */
+  background-color: white;
+}
+
+.nes-container + .nes-container {
+  margin-top: 24px;
+}
